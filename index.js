@@ -11,6 +11,12 @@ app.use(cors());
 
 mongoose.connect("mongodb+srv://mrbad:mrbad@miblog-cluster.rrw8i.mongodb.net/miblog?retryWrites=true&w=majority");
 
+app.get("/health-check", async (req, res) => {
+    res.json({
+        status : "OK"
+    })
+})
+
 app.get(API_PREFIX + "/get-blogs", (req, res) => {
     BlogModel.find({}, (err, result) => {
         if (err) {
@@ -93,6 +99,6 @@ app.post(API_PREFIX + "/update-comments", async (req, res) => {
 
 const port = 3001;
 app.listen(3001, () => {
-    console.log("Server run at ", 3001);
+    console.log("Server run at ", port);
 })
 
