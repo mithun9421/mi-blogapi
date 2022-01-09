@@ -97,7 +97,7 @@ app.post(API_PREFIX + "/update-comments", async (req, res) => {
     res.json(output)
 })
 
-const port = 3001;
+const port = process.env.PORT || 3001;
 app.listen(3001, () => {
     console.log("Server run at ", port);
 })
